@@ -51,10 +51,7 @@ A Linux-inspired virtual operating system built **entirely with HTML, CSS, and J
 
 This project simulates a Linux desktop experience within the browser — perfect for learning DOM, UI/UX principles, and front-end logic without relying on libraries.
 
----
 
-👩‍💻Lets connect on 
-🔗 [LinkedIn](#) 
 
 ---
 
