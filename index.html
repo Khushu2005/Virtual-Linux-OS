@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux OS</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Starter page  -->
+  <div class="bg" id="lockpage">
+    <div id="lock-nav">
+      <div class="nav-left">
+        <div class="nav-network"><img width="17" height="15"
+            src="https://img.icons8.com/ios-glyphs/18/FFFFFF/wifi--v1.png" alt="wifi--v1" /></div>
+        <div class="nav-volume"><img width="17" height="15"
+            src="https://img.icons8.com/sf-regular/28/FFFFFF/medium-volume.png" alt="medium-volume" /></div>
+        <div class="nav-battery"> <img id="battery-icon"
+            src="https://img.icons8.com/ios-filled/15/ffffff/battery--v1.png" title="Battery" /> </div>
+      </div>
+      <div class="nav-center">
+        <div class="datetime"></div>
+      </div>
+      <div class="nav-right">
+        <div class="nav-user">👤</div>
+        <span id="nav-tooltip">Hey Khushi!</span>
+      </div>
+    </div>
+  </div>
+  <!-- login page -->
+  <div class="login-screen" id="loginscreen">
+    <div class="login-box">
+      <!-- <h2>Welcome to Khushi Linux</h2> -->
+      <div class="user-icon">👤</div>
+      <p class="username">Khushi Sharma</p>
+      <div class="inputbox">
+        <input type="password" id="passwordinput" placeholder="Password" class="login-input">
+        <i class=" arrowbtn ri-arrow-right-line"></i>
+      </div>
+      <!-- <input type="password" id="passwordinput" placeholder="Password" class="login-input"> -->
+      <!-- <button id="loginbtn" class="login-button">Log In</button> -->
+      <p id="errormsg" style="color: red; display: none; font-size: large;">Wrong password. Try again.</p>
+
+    </div>
+
+
+
+
+  </div>
+  <!-- desktop -->
+  <div id="desktop">
+    <nav class="navbar" id="navbar">
+      <a id="home-btn" class="home"><img width="34" height="34" id="menu-btn"
+          src="https://img.icons8.com/external-glyph-silhouettes-icons-papa-vector/78/FFFFFF/external-Menu-interface-glyph-silhouettes-icons-papa-vector.png"
+          alt="external-Menu-interface-glyph-silhouettes-icons-papa-vector" class="home" />
+        <span id="start-tooltip"> Start</span></a>
+      <div class="taskbaricons"><a id="file-btn"><img width="28" height="28"
+            src="https://img.icons8.com/papercut/60/windows-explorer.png" alt="windows-explorer" />
+          <span id="file-tooltip"> File explorer</span>
+        </a><a id="chrome-btn"><img width="28" height="28" src="./firefox.png" alt="chrome--v1" />
+          <span id="chrome-tooltip"> Chrome</span></a>
+        <a id="ter-btn" onclick="openTerminal()"><img width="28" height="28"
+            src="https://img.icons8.com/fluency/28/console.png" alt="console" />
+          <span id="terminal-tooltip"> Terminal</span></a>
+        <a id="sticky-btn">
+          <img width="28" height="28" src="https://img.icons8.com/fluency/48/sticky-notes.png" alt="Sticky Notes" />
+          <span id="sticky-tooltip"> Sticky Notes</span>
+        </a>
+        <a id="clock-btn" onclick="openClockWindow()"><img width="28" height="28"
+            src="https://img.icons8.com/3d-fluency/94/clock.png" alt="clock" />
+          <span id="clock-tooltip"> Clock</span></a>
+      </div>
+
+      <div class="power-supply" id="system-tray">
+        <a><img width="15" height="15" src="https://img.icons8.com/ios-glyphs/18/FFFFFF/wifi--v1.png"
+            alt="wifi--v1" /></a>
+
+        <a><img width="15" height="15" src="https://img.icons8.com/sf-regular/28/FFFFFF/medium-volume.png"
+            alt="medium-volume" /></a>
+        <a><img width="15" height="15" src="https://img.icons8.com/material-sharp/28/FFFFFF/microphone--v1.png"
+            alt="microphone--v1" /></a>
+        <a><img width="15" height="15" src="https://img.icons8.com/material-outlined/28/FFFFFF/shutdown--v1.png"
+            alt="shutdown--v1" /></a>
+      </div>
+      <!-- Date & Time Inside Nav -->
+      <div class="nav-datetime" id="navDatetime"></div>
+    </nav>
+    <!-- power-supply pop-up -->
+    <div id="system-popup" class="hidden">
+      <div class="popup-content">
+        <!-- Volume Controls -->
+        <div class="control">
+          <span class="toggle-icon" id="volume-toggle">
+            <img id="volume-icon" src="https://img.icons8.com/ios-filled/18/ffffff/medium-volume.png" alt="volume" />
+          </span>
+          <input type="range" min="0" max="100" value="70" />
+        </div>
+        <!-- mic -->
+        <div class="control">
+          <span class="toggle-icon" id="mic-toggle">
+            <img id="mic-icon" src="https://img.icons8.com/ios-filled/18/ffffff/microphone.png" alt="mic" />
+          </span>
+          <input type="range" min="0" max="100" value="50" />
+        </div>
+
+        <!-- Menu List (middle options) -->
+        <ul class="menu-list">
+          <li><img src="https://img.icons8.com/ios-filled/18/ffffff/network-card.png" /> Wired Connected</li>
+          <li><img src="https://img.icons8.com/ios-filled/18/ffffff/smartphone-tablet.png" /> Mobile Devices</li>
+          <li id="lock-btn"><img src="https://img.icons8.com/material-outlined/20/FFFFFF/shutdown--v1.png" /> Lock</li>
+        </ul>
+
+        <!-- Footer Row -->
+        <div class="popup-footer">
+          <div class="left-footer">
+            <img id="battery-icon" src="https://img.icons8.com/ios-filled/28/ffffff/battery--v1.png" title="Battery" />
+            <span id="battery-tooltip"> Battery Status: 78%</span>
+          </div>
+          <div class="right-footer">
+            <img id="settings-icon" src="https://img.icons8.com/ios-filled/18/ffffff/settings--v1.png"
+              title="Settings" />
+            <img id="power-icon" src="https://img.icons8.com/material-outlined/28/FFFFFF/shutdown--v1.png"
+              title="Power" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- top right nav weather -->
+    <div class="weather-widget" id="weatherWidget">
+      🌤️ 32°C | Lucknow
+    </div>
+    <div class="weather-popup hidden" id="weatherPopup">
+      <strong>Lucknow 🌤️ 32°C</strong><br>
+      Condition: Partly Cloudy<br>
+
+      Humidity: 58%<br>
+      Wind: 12 km/h
+      <button class="weather-btn">More <i class=" arrowbtns ri-arrow-right-line"></i></button>
+    </div>
+
+    <!-- terminal popup -->
+    <div class="terminal-window hidden" id="terminal">
+      <div class="terminal-header" id="terminalHeader">
+        <div class="terminal-controls">
+          <span class="close-btn"></span>
+          <span class="min-btn"></span>
+          <span class="max-btn"></span>
+        </div>
+        Terminal - Khushi@linux
+      </div>
+      <div class="terminal-body" id="terminalOutput"></div>
+      <input type="text" id="terminalInput" class="terminal-input" autofocus />
+    </div>
+  </div>
+<!-- main desktop popup -->
+  <!-- Right-click context menu -->
+  <ul id="context-menu">
+<li class="has-submenu">📁 New ▸
+      <ul class="submenu">
+        <li onclick="createFolder()">📂 Folder</li>
+        <li onclick="createTextFile()">📄 Text Document</li>
+      </ul>
+    </li>
+    <li onclick="openTerminal()"> <img width="20" height="20" src="https://img.icons8.com/fluency/48/console.png"
+        alt="">Terminal</li>
+    <li onclick="refreshDesktop()"><img width="18" height="17"
+        src="https://img.icons8.com/ios-filled/50/FFFFFF/restart--v1.png" alt="restart--v1" />Refresh</li>
+    <li onclick="toggleView()"><img width="18" height="17"
+        src="https://img.icons8.com/material-two-tone/24/EBEBEB/menu--v1.png" alt="menu--v1" /> View</li>
+  </ul>
+
+  <!-- sticky notes -->
+  <div id="sticky-app" class="sticky hidden">
+    <div class="sticky-header">
+      <div class="window-controls">
+        <span class="dot close-dot"></span>
+        <span class="dot min-dot"></span>
+        <span class="dot max-dot"></span>
+      </div>
+      <span class="sticky-title">Sticky Notes</span>
+    </div>
+    <div class="sticky-body">
+      <div id="notes-container" class="notes-container"></div>
+      <button id="add-note" class="add-note-btn">+ Add Note</button>
+    </div>
+  </div>
+  <!-- file explorer -->
+  <div id="file-explorer" class="file-explorer hidden">
+    <div class="explorer-header">
+      <div class="dots">
+        <div class="dot red" id="explorer-close"></div>
+        <div id="explorer-min" class="dot yellow"></div>
+        <div id="explorer-max" class="dot green"></div>
+      </div>
+      <span>File Explorer</span>
+    </div>
+    <div class="explorer-body">
+      <div class="explorer-sidebar">
+        <div class="folder-item" data-folder="Desktop">🖥️ Desktop</div>
+        <div class="folder-item" data-folder="Documents">📄 Documents</div>
+        <div class="folder-item" data-folder="Downloads">📥 Downloads</div>
+        <div class="folder-item" data-folder="Public">🌐 Public</div>
+        <div class="folder-item" data-folder="Pictures">🖼️ Pictures</div>
+        <div class="folder-item" data-folder="Videos">🎞️ Videos</div>
+        <div class="folder-item" data-folder="Music">🎵 Music</div>
+      </div>
+
+      <div class="explorer-main">
+        <!-- Breadcrumb navigation -->
+        <div id="breadcrumb" class="breadcrumb-nav">Home > Documents</div>
+
+        <h3 id="current-folder">Documents</h3>
+        <button id="new-file-btn">➕ New File</button>
+        <div id="files-container"></div>
+        <!-- Context Menu -->
+        <ul id="file-context-menu" class="context-menu hidden">
+          <li id="ctx-open">Open</li>
+          <li id="ctx-rename">Rename</li>
+          <li id="ctx-delete">Delete</li>
+        </ul>
+        <div id="files-container"></div>
+      </div>
+    </div>
+    <div class="resize-handle resize-both"></div>
+  </div>
+  <div id="file-preview" class="hidden">
+    <div class="preview-header">
+      <span id="preview-title">Preview</span>
+      <button id="close-preview">✖</button>
+    </div>
+    <div class="preview-content" id="preview-content">
+      <!-- content will load dynamically -->
+    </div>
+  </div>
+  <!-- lock popup -->
+  <div id="power-popup" class="hidden">
+    <div class="power-menu">
+      <p onclick="alert('🔁 Rebooting...')">Reboot</p>
+      <p onclick="alert('⏻ Shutting down...')"> Shutdown</p>
+      <p id="logout-btn">Logout</p>
+      <p onclick="alert('🔄 Restarting...')"> Restart</p>
+    </div>
+  </div>
+
+  <!-- Clock Popup Window -->
+  <div class="clock-window" id="clockWindow">
+    <!-- 🟢 Header Bar -->
+    <div class="clock-header" id="clockHeader">
+      <div class="window-controls">
+        <span onclick="closeClockWindow()" class="close"></span>
+        <span class="minimize"></span>
+        <span class="maximize"></span>
+      </div>
+      <div class="window-title">Clock</div>
+    </div>
+
+    <!-- 🕒 Clock Content -->
+    <div class="clock-content">
+
+      <!-- 🔘 Clock Tab Content (Default Visible) -->
+      <div class="tab-section" data-tab="clock" style="display: block;">
+        <div id="liveClock" style="text-align: center; font-size: 2.2vw; margin-bottom: 20px; color: #00ff80;"></div>
+      </div>
+
+      <!-- ⏱ Stopwatch Section -->
+      <div class="tab-section" data-tab="stopwatch" style="display: none;">
+        <div id="stopwatch-display" style="font-size: 2.5vw; color: #00ff80; margin-bottom: 15px;">00:00:00.00</div>
+        <div class="stopwatch-controls">
+          <button id="startStopwatch">▶️ Start</button>
+          <button id="resetStopwatch">🔁 Reset</button>
+        </div>
+      </div>
+
+      <!-- ⏳ Timer Section -->
+      <div class="tab-section" data-tab="timer" style="display: none;">
+        <p style="color: #ccc; font-size: 1.2vw;">⏳ Timer feature coming soon...</p>
+      </div>
+
+      <!-- ⏰ Alarm Section -->
+      <div class="tab-section" data-tab="alarm" style="display: none;">
+        <p style="color: #ccc; font-size: 1.2vw;">⏰ Alarm settings coming soon...</p>
+      </div>
+
+      <!-- 🌍 World Clock Section -->
+      <div class="tab-section" data-tab="world" style="display: none;">
+        <p style="color: #ccc; font-size: 1.2vw;">🌍 World Clock view coming soon...</p>
+      </div>
+
+      <!-- 🔵 Tab Navigation -->
+      <div class="clock-tabs-container">
+        <div class="clock-tab active" data-tab="clock">Clock</div>
+        <div class="clock-tab" data-tab="stopwatch">Stopwatch</div>
+        <div class="clock-tab" data-tab="timer">Timer</div>
+        <div class="clock-tab" data-tab="alarm">Alarm</div>
+        <div class="clock-tab" data-tab="world">World Clock</div>
+      </div>
+    </div>
+
+    <!-- 🖱 Resize Handles -->
+    <div class="resize-handle"></div> <!-- bottom-right -->
+    <div class="resize-handle resize-r"></div> <!-- right -->
+    <div class="resize-handle resize-b"></div> <!-- bottom -->
+  </div>
+  <!-- App Grid Menu -->
+  <div id="app-grid" class="app-grid hidden">
+    <!-- close -->
+    <div id="app-close" class="app-close">×</div>
+    <!-- search -->
+    <input type="text" id="app-search" placeholder="Search apps..." />
+
+
+    <div class="app-icons">
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/console.png"
+          alt="console" /><span>Terminal</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/papercut/60/windows-explorer.png"
+          alt="windows-explorer" /><span>File explorer</span>
+      </div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/sticky-notes.png"
+          alt="Sticky Notes" /><span>Sticky Notes</span></div>
+      <div class="app"><img width="28" height="28" src="https://img.icons8.com/3d-fluency/94/clock.png"
+          alt="clock" /><span>Clock</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/color/48/settings--v1.png"
+          alt="settings--v1" /><span>Setting</span></div>
+      <div class="app"><a href="https://www.netflix.com/in/" class="external-app" target="_parent"><img width="48"
+            height="48" src="https://img.icons8.com/color/48/netflix-desktop-app--v1.png"
+            alt="netflix-desktop-app--v1" /></a><span>Netflix</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/discord-logo.png"
+          alt="discord-logo" /><span>Discord</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/instagram-new.png"
+          alt="instagram-new" /><span>Instagram</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/color/48/linkedin.png"
+          alt="linkedin" /><span>LinkedIn</span></div>
+      <div class="app"><img src="./firefox.png" /><span>Browser</span></div>
+
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/telegram-app.png"
+          alt="telegram-app" /><span>Telegram</span></div>
+      <div class="app"><img width="48" height="48"
+          src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/48/external-github-with-cat-logo-an-online-community-for-software-development-logo-bold-tal-revivo.png"
+          alt="external-github-with-cat-logo-an-online-community-for-software-development-logo-bold-tal-revivo" /><span>Github</span>
+      </div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/totem-video-player.png"
+          alt="totem-video-player" /><span>video Player</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/evince.png"
+          alt="evince" /><span>Evince</span></div>
+      <div class="app"><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/GNOME_Software_logo_%28version_40%2C_December_2020%29.svg/1200px-GNOME_Software_logo_%28version_40%2C_December_2020%29.svg.png" /><span>Software
+          Center</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/photo-viewer.png"
+          alt="photo-viewer" /><span>Image Viewer</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/material-sharp/48/google-fonts.png"
+          alt="google-fonts" /><span>Fonts</span></div>
+      <div class="app"><img width="48" height="48"
+          src="https://img.icons8.com/external-flat-adri-ansyah/32/external-user-home-screen-apps-flat-adri-ansyah-21.png"
+          alt="external-user-home-screen-apps-flat-adri-ansyah-21" /><span>Weather</span></div>
+      <div class="app"><img width="48" height="48" src="https://img.icons8.com/color/48/marker--v1.png"
+          alt="marker--v1" /><span>Map</span></div>
+      <!-- Add more apps as needed -->
+    </div>
+    <!-- pagination indicators -->
+    <div id="pagination"></div>
+    <!-- frequent|all -->
+    <div class="grid-toggle">
+      <button class="toggle-btn active">Frequent</button>
+      <button class="toggle-btn">All</button>
+    </div>
+  </div>
+  <!-- refresh -->
+  <div id="desktop-flicker"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
