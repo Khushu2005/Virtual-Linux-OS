@@ -5,6 +5,7 @@ window.onload = function () {
   const errormsg = document.getElementById('errormsg');
   const desktop = document.getElementById('desktop');
   const contextMen = document.getElementById('context-menu');
+  const arrowbtn = document.querySelector(".arrowbtn");
   let lastTap = 0;
 
   // Date and Time
@@ -28,7 +29,7 @@ window.onload = function () {
       setTimeout(() => {
         loginscreen.style.zIndex = 0;
         lockpage.style.filter = 'none';
-      }, 7000);
+      },50000);
     }
   });
 
@@ -40,7 +41,7 @@ window.onload = function () {
         errormsg.textContent = "Please enter a password.";
         errormsg.style.display = "block";
         errormsg.style.fontSize = "16px";
-      } else if (enteredpassword === "k") {
+      } else if (enteredpassword === "linux") {
         errormsg.style.display = "none";
         desktop.style.display = 'block';
         errormsg.style.fontSize = "16px";
@@ -54,6 +55,26 @@ window.onload = function () {
       }
     }
   });
+  arrowbtn.addEventListener('click', function () {
+  const enteredpassword = passinp.value;
+  if (enteredpassword === "") {
+    errormsg.textContent = "Please enter a password.";
+    errormsg.style.display = "block";
+    errormsg.style.fontSize = "16px";
+  } else if (enteredpassword === "linux") {
+    errormsg.style.display = "none";
+    desktop.style.display = 'block';
+    errormsg.style.fontSize = "16px";
+    loginscreen.style.display = 'none';
+    lockpage.style.display = 'none';
+  } else {
+    errormsg.textContent = "Wrong password. Try again.";
+    errormsg.style.display = "block";
+    errormsg.style.fontSize = "16px";
+    passinp.value = '';
+  }
+});
+
 
   // Folder Creation Function
 
@@ -188,6 +209,8 @@ window.onload = function () {
 
 
   window.openTerminal = function () {
+    document.getElementById('app-grid').classList.add('hidden');
+
     alert("🖥️ Opening terminal...");
     contextMen.style.display = 'none';
   }
@@ -329,6 +352,8 @@ window.onload = function () {
   }
   updateNavTime();
   setInterval(updateNavTime, 1000);
+
+
 
   // taskbar clock
   const clockWindow = document.getElementById("clockWindow");
@@ -661,6 +686,8 @@ window.onload = function () {
 
 
   // menu app
+  // appGrid.classList.add('hidden');
+
   const appGrid = document.getElementById("app-grid");
   const searchInput = document.getElementById("app-search");
   const closeBtn = document.getElementById("app-close"); // Close button
@@ -740,6 +767,8 @@ window.onload = function () {
   let previousStickyPos = { top: 0, left: 0, width: 0, height: 0 };
 
   stickyBtn.addEventListener("click", () => {
+    document.getElementById('app-grid').classList.add('hidden');
+
     stickyApp.classList.remove("hidden");
     if (!stickyInitialized) initStickyNotes();
   });

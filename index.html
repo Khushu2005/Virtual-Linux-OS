@@ -40,6 +40,8 @@
       <div class="inputbox">
         <input type="password" id="passwordinput" placeholder="Password" class="login-input">
         <i class=" arrowbtn ri-arrow-right-line"></i>
+        <p class="password-hint">🔐 Hint: password - linux</p>
+
       </div>
       <!-- <input type="password" id="passwordinput" placeholder="Password" class="login-input"> -->
       <!-- <button id="loginbtn" class="login-button">Log In</button> -->
@@ -306,6 +308,8 @@
     <div class="resize-handle resize-b"></div> <!-- bottom -->
   </div>
   <!-- App Grid Menu -->
+   <!-- <div class="app" onclick="appGrid.classList.add('hidden'); openClockWindow()"> -->
+
   <div id="app-grid" class="app-grid hidden">
     <!-- close -->
     <div id="app-close" class="app-close">×</div>
@@ -314,14 +318,14 @@
 
 
     <div class="app-icons">
-      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/console.png"
+      <div class="app" onclick="document.getElementById('app-grid').classList.add('hidden'); openTerminal()"><img width="48" height="48" src="https://img.icons8.com/fluency/48/console.png"
           alt="console" /><span>Terminal</span></div>
-      <div class="app"><img width="48" height="48" src="https://img.icons8.com/papercut/60/windows-explorer.png"
+      <div class="app" onclick="document.getElementById('app-grid').classList.add('hidden'); openFileExplorer()"><img width="48" height="48" src="https://img.icons8.com/papercut/60/windows-explorer.png"
           alt="windows-explorer" /><span>File explorer</span>
       </div>
-      <div class="app"><img width="48" height="48" src="https://img.icons8.com/fluency/48/sticky-notes.png"
+      <div class="app" onclick="document.getElementById('sticky-btn').click()"><img width="48" height="48" src="https://img.icons8.com/fluency/48/sticky-notes.png"
           alt="Sticky Notes" /><span>Sticky Notes</span></div>
-      <div class="app"><img width="28" height="28" src="https://img.icons8.com/3d-fluency/94/clock.png"
+      <div class="app" onclick="document.getElementById('app-grid').classList.add('hidden'); openClockWindow()"><img width="28" height="28" src="https://img.icons8.com/3d-fluency/94/clock.png"
           alt="clock" /><span>Clock</span></div>
       <div class="app"><img width="48" height="48" src="https://img.icons8.com/color/48/settings--v1.png"
           alt="settings--v1" /><span>Setting</span></div>

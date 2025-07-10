@@ -107,6 +107,65 @@ html {
   margin-top: -4%;
 }
 
+/* Password hint style */
+.password-hint {
+  font-size: 12px;
+  color: #ccc;
+  margin-top: -10px;
+  text-align: center;
+  padding-left: 10px;
+  /* font-style: italic; */
+}
+
+/* Responsive login box */
+@media (max-width: 768px) {
+  .login-box {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .user-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    margin: 10px auto;
+  }
+
+  .username {
+    font-size: 20px;
+  }
+
+  .inputbox {
+    width: 100%;
+  }
+
+  .login-box input {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .arrowbtn {
+    right: 8%;
+    font-size: 18px;
+  }
+
+  #errormsg {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    width: 90%;
+  }
+
+  .password-hint {
+    font-size: 11px;
+    padding-left: 18px;
+  }
+}
+
+
 /* desktop */
 #desktop {
   position: absolute;
